@@ -1,33 +1,64 @@
 import rl = require("readline-sync");
+import { colors } from "./src/util/Colors";
 
 export function header(): void {
-  console.log("\n################################################\n");
-  console.log("\t\tRaiTerminal Bank");
-  console.log("\n################################################\n");
+  console.log(
+    colors.bg.white,
+    colors.fg.bluestrong,
+    "                                                "
+  );
+  console.log("##################################################");
+  console.log("                                                  ");
+  console.log("              $ $ RaiTerminal Bank $ $            ");
+  console.log("                                                  ");
+  console.log("##################################################");
+  console.log(
+    "                                                 ",
+    colors.reset
+  );
 }
 
 export function main() {
   let opcao: number;
   while (true) {
+    console.clear();
     header();
-    console.log("\t1 - Nova Conta");
-    console.log("\t2 - Lista de Contas");
-    console.log("\t3 - Buscar Conta por Numero");
-    console.log("\t4 - Atualizar Dados da Conta");
-    console.log("\t5 - Deletar Conta");
-    console.log("\t6 - Saque");
-    console.log("\t7 - Deposito");
-    console.log("\t8 - Transferencia Entre Contas");
-    console.log("\t9 - Sair");
-    console.log("\n################################################\n");
+    console.log(
+      colors.bg.white,
+      colors.fg.bluestrong,
+      "       1 - Nova Conta                           "
+    );
+    console.log("         2 - Lista de Contas                      ");
+    console.log("         3 - Buscar Conta por Numero              ");
+    console.log("         4 - Atualizar Dados da Conta             ");
+    console.log("         5 - Deletar Conta                        ");
+    console.log("         6 - Sacar                                ");
+    console.log("         7 - Depositar                            ");
+    console.log("         8 - Transferencia Entre Contas           ");
+    console.log("         9 - Sair                                 ");
+    console.log("                                                  ");
+    console.log("##################################################");
+    console.log(
+      "                                                 ",
+      colors.reset
+    );
 
-    console.log("Entre com a opção desejada: ");
+    console.log("\nEntre com a opção desejada: ");
     opcao = rl.questionInt("");
 
     if (opcao == 9) {
       console.clear();
-      header();
-      console.log("\nRaiTerminal Bank - Tranzendo o melhor dos bancos \npara o seu terminal!\n");
+      console.log(
+        colors.bg.blue,
+        colors.fg.whitestrong,
+        "                                                "
+      );
+      console.log("##################################################");
+      console.log("                                                  ");
+      console.log("              $ $ RaiTerminal Bank $ $            ");
+      console.log("  Tranzendo o melhor dos bancos pro seu terminal! ");
+      console.log("                                                  ");
+      console.log("##################################################");
       sobre();
       process.exit(0);
     }
@@ -35,58 +66,109 @@ export function main() {
     switch (opcao) {
       case 1:
         console.clear();
-        console.log("\n\nCriar Conta\n\n");
+        header();
+        console.log(colors.fg.whitestrong, "\n\nNova Conta\n\n", colors.reset);
 
+        keyPress();
         break;
       case 2:
         console.clear();
-        console.log("\n\nListar todas as Contas\n\n");
+        header();
+        console.log(
+          colors.fg.whitestrong,
+          "\n\nLista de Contas\n\n",
+          colors.reset
+        );
 
+        keyPress();
         break;
       case 3:
         console.clear();
-        console.log("\n\nConsultar dados da Conta - por numero\n\n");
+        header();
+        console.log(
+          colors.fg.whitestrong,
+          "\n\nBuscar Conta por Numero\n\n",
+          colors.reset
+        );
 
+        keyPress();
         break;
       case 4:
         console.clear();
-        console.log("\n\nAtualizar dados da Conta\n\n");
+        header();
+        console.log(
+          colors.fg.whitestrong,
+          "\n\nAtualizar Dados da Conta\n\n",
+          colors.reset
+        );
 
+        keyPress();
         break;
       case 5:
         console.clear();
-        console.log("\n\nApagar uma Conta\n\n");
+        header();
+        console.log(
+          colors.fg.whitestrong,
+          "\n\nDeletar Conta\n\n",
+          colors.reset
+        );
 
+        keyPress();
         break;
       case 6:
         console.clear();
-        console.log("\n\nSaque\n\n");
+        header();
+        console.log(colors.fg.whitestrong, "\n\nSaque\n\n", colors.reset);
 
+        keyPress();
         break;
       case 7:
         console.clear();
-        console.log("\n\nDeposito\n\n");
+        header();
+        console.log(colors.fg.whitestrong, "\n\nDeposito\n\n", colors.reset);
 
+        keyPress();
         break;
       case 8:
         console.clear();
-        console.log("\n\nTransferencia entre Contas\n\n");
+        header();
+        console.log(
+          colors.fg.whitestrong,
+          "\n\nTransferencia Entre Contas\n\n",
+          colors.reset
+        );
 
+        keyPress();
         break;
       default:
         console.clear();
+        header();
         console.log("\nOpcao Invalida!\n");
 
+        keyPress();
         break;
     }
   }
 }
 
+function keyPress(): void {
+  console.log(colors.reset, "");
+  console.log("Pressione enter para continuar...");
+  rl.prompt();
+}
+
 export function sobre(): void {
-  console.log("Projeto Desenvolvido por: ");
-  console.log("Lucas Alves Pinheiro - l.pinheiro.w@gmail.com.br");
-  console.log("github.com/RaideriSpace");
-  console.log("\n################################################\n");
+  console.log("                                                  ");
+  console.log("  Projeto Desenvolvido por:                       ");
+  console.log("  Lucas Alves Pinheiro                            ");
+  console.log("  E-mail: l.pinheiro.w@gmail.com.br               ");
+  console.log("  GitHub: github.com/RaideriSpace                 ");
+  console.log("                                                  ");
+  console.log("##################################################");
+  console.log(
+    "                                                 ",
+    colors.reset
+  );
 }
 
 main();
