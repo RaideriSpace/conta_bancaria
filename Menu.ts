@@ -1,5 +1,6 @@
 import rl = require("readline-sync");
 import { colors } from "./src/util/Colors";
+import { Conta } from "./src/model/Conta";
 
 export function header(): void {
   console.log(
@@ -20,6 +21,21 @@ export function header(): void {
 
 export function main() {
   let opcao: number;
+
+  const conta1: Conta = new Conta(8, 36, 1, "Lucas", 10000);
+  conta1.visualizar();
+  conta1.sacar(10500);
+  conta1.visualizar();
+  conta1.depositar(5000);
+  conta1.visualizar();
+
+  const conta2: Conta = new Conta(7, 63, 2, "Sarah", 20000);
+  conta2.visualizar();
+  conta2.sacar(10000);
+  conta2.visualizar();
+  conta2.depositar(500);
+  conta2.visualizar;
+
   while (true) {
     console.clear();
     header();
@@ -151,7 +167,7 @@ export function main() {
   }
 }
 
-function keyPress(): void {
+export function keyPress(): void {
   console.log(colors.reset, "");
   console.log("Pressione enter para continuar...");
   rl.prompt();
