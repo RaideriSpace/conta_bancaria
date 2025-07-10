@@ -10,7 +10,7 @@ Projeto de criação de um sistema bancario via terminal com TypeScript.
   </summary>
 
     .
-    ├── node_modules/               # Pasta de dependencias criada ao executar "npm install". Contém todos os pacotes listados no package.json
+    ├── node_modules/               # Pasta de dependencias criada ao executar "npm install". Contém todos os pacotes listados no package.json.
     ├── src/
     │   ├── model/
     │   │   └── Conta.ts            # Classe com atributos private e método construtor, get e set para orientação ao objeto e métodos específicos de "sacar", "depositar" e "visualizar"           
