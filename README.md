@@ -14,6 +14,8 @@ Projeto de criação de um sistema bancario via terminal com TypeScript.
     ├── src/
     │   ├── model/
     │   │   └── Conta.ts            # Classe com atributos private e método construtor, get e set para orientação ao objeto e métodos específicos de "sacar", "depositar" e "visualizar"           
+    │   │   └── ContaCorrente.ts    # Classe com atributos herdados da classe Conta.ts + atributo "limite" e atualização dos métodos "sacar" e "visualizar".           
+    │   │   └── ContaPoupanca.ts    # Classe com atributos herdados da classe Conta.ts + atributo "aniversario" e atualização do método "visualizar".          
     │   └── util/                 
     │       └── Colors.ts           # Classe implementada para alteração de cores do terminal. Contém os atributos: "reset", "fg" e "bg".
     ├── .gitignore                  # Arquivos e pastas a serem ignorados pelo Git
@@ -24,6 +26,14 @@ Projeto de criação de um sistema bancario via terminal com TypeScript.
     └── README.md                   # Este arquivo!
 
 </details>
+
+## V1.3
+
+- Criação do ```ContaCorrente.ts``` com atributos herdados de ```Conta.ts``` adicionando o atributo ```limite```.
+- Criação do ```ContaPoupanca.ts``` com atributos herdados de ```Conta.ts``` adicionando o atributo ```aniversario```.
+- Remoção de 1 objetos testes no ```Menu.ts```. 
+- Adição de 2 objetos testes no ```Menu.ts```. Um para ```ContaCorrente.ts``` e outro para ```ContaPoupanca.ts```. 
+- Adição de comentários aos códigos para melhor clareza do que está acontecendo.
 
 ## V1.2
 

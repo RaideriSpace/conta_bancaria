@@ -1,7 +1,10 @@
 import rl = require("readline-sync");
 import { colors } from "./src/util/Colors";
 import { Conta } from "./src/model/Conta";
+import { ContaCorrente } from "./src/model/ContaCorrente";
+import { ContaPoupanca } from "./src/model/ContaPoupanca";
 
+// Criação do método "header" para reaproveitamento do "cabeçalho" do banco. 
 export function header(): void {
   console.log(
     colors.bg.white,
@@ -19,24 +22,46 @@ export function header(): void {
   );
 }
 
+// Criação do método "main", parte principal que utilizará as classes e métodos criados.
 export function main() {
   let opcao: number;
 
-  const conta1: Conta = new Conta(8, 36, 1, "Lucas", 10000);
-  conta1.visualizar();
-  conta1.sacar(10500);
-  conta1.visualizar();
-  conta1.depositar(5000);
-  conta1.visualizar();
+  // Teste de criação de objeto "Conta" normal.
+  const conta: Conta = new Conta(8, 36, 1, "Lucas", 10000);
+  conta.visualizar();
+  keyPress();
+  conta.sacar(10500);
+  conta.visualizar();
+  keyPress();
+  conta.depositar(5000);
+  conta.visualizar();
+  keyPress();
 
-  const conta2: Conta = new Conta(7, 63, 2, "Sarah", 20000);
-  conta2.visualizar();
-  conta2.sacar(10000);
-  conta2.visualizar();
-  conta2.depositar(500);
-  conta2.visualizar;
+  // Teste de criação de objeto "ContaCorrente" com atributos herdados de "Conta" + limite.
+  const contaCorrente: ContaCorrente = new ContaCorrente(7, 63, 1, "Sarah", 20000, 500);
+  contaCorrente.visualizar();
+  keyPress();
+  contaCorrente.sacar(10000);
+  contaCorrente.visualizar();
+  keyPress();
+  contaCorrente.depositar(500);
+  contaCorrente.visualizar();
+  keyPress();
 
+  // Teste de criação de objeto "ContaPoupanca" com atributos herdados de "Conta" + aniversario.
+  const contaPoupanca: ContaPoupanca = new ContaPoupanca(50, 4, 2, "Ayla", 5000, 29);
+  contaPoupanca.visualizar();
+  keyPress();
+  contaPoupanca.sacar(10000);
+  contaPoupanca.visualizar();
+  keyPress();
+  contaPoupanca.depositar(500);
+  contaPoupanca.visualizar();
+  keyPress();
+
+  // Enquanto verdadeiro: 
   while (true) {
+    // Exibe o Menu de Opções
     console.clear();
     header();
     console.log(
@@ -59,9 +84,11 @@ export function main() {
       colors.reset
     );
 
+    // Solicita uma opção.
     console.log("\nEntre com a opção desejada: ");
     opcao = rl.questionInt("");
 
+    // Se a opção for o 9, finaliza o programa e exibe a mensagem de saída.
     if (opcao == 9) {
       console.clear();
       console.log(
@@ -79,6 +106,7 @@ export function main() {
       process.exit(0);
     }
 
+    // Se a opção for diferente de 9, entra no switch.
     switch (opcao) {
       case 1:
         console.clear();
@@ -167,12 +195,14 @@ export function main() {
   }
 }
 
+// Método de KeyPress para solicitar que uma tecla seja pressionada para continuar.
 export function keyPress(): void {
   console.log(colors.reset, "");
   console.log("Pressione enter para continuar...");
   rl.prompt();
 }
 
+// Método de "sobre" para exibição dos créditos ao finalizar o programa.
 export function sobre(): void {
   console.log("                                                  ");
   console.log("  Projeto Desenvolvido por:                       ");
@@ -187,4 +217,5 @@ export function sobre(): void {
   );
 }
 
+// Chama o main para rodar.
 main();
