@@ -3,7 +3,7 @@ import { header, keyPress } from "../../Menu";
 import { colors } from "../util/Colors";
 
 // Exportação da classe "Conta".
-export class Conta {
+export abstract class Conta {
   // Declaração das características privadas da classe "Conta".
   private _numero: number;
   private _agencia: number;

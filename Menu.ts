@@ -1,6 +1,5 @@
 import rl = require("readline-sync");
 import { colors } from "./src/util/Colors";
-import { Conta } from "./src/model/Conta";
 import { ContaCorrente } from "./src/model/ContaCorrente";
 import { ContaPoupanca } from "./src/model/ContaPoupanca";
 
@@ -25,17 +24,6 @@ export function header(): void {
 // Criação do método "main", parte principal que utilizará as classes e métodos criados.
 export function main() {
   let opcao: number;
-
-  // Teste de criação de objeto "Conta" normal.
-  const conta: Conta = new Conta(8, 36, 1, "Lucas", 10000);
-  conta.visualizar();
-  keyPress();
-  conta.sacar(10500);
-  conta.visualizar();
-  keyPress();
-  conta.depositar(5000);
-  conta.visualizar();
-  keyPress();
 
   // Teste de criação de objeto "ContaCorrente" com atributos herdados de "Conta" + limite.
   const contaCorrente: ContaCorrente = new ContaCorrente(7, 63, 1, "Sarah", 20000, 500);

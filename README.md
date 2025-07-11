@@ -13,9 +13,11 @@ Projeto de criação de um sistema bancario via terminal com TypeScript.
     ├── node_modules/               # Pasta de dependencias criada ao executar "npm install". Contém todos os pacotes listados no package.json
     ├── src/
     │   ├── model/
-    │   │   └── Conta.ts            # Classe com atributos private e método construtor, get e set para orientação ao objeto e métodos específicos de "sacar", "depositar" e "visualizar"           
+    │   │   └── Conta.ts            # Classe abstrata com atributos private e método construtor, get e set para orientação ao objeto e métodos específicos de "sacar", "depositar" e "visualizar"           
     │   │   └── ContaCorrente.ts    # Classe com atributos herdados da classe Conta.ts + atributo "limite" e atualização dos métodos "sacar" e "visualizar".           
-    │   │   └── ContaPoupanca.ts    # Classe com atributos herdados da classe Conta.ts + atributo "aniversario" e atualização do método "visualizar".          
+    │   │   └── ContaPoupanca.ts    # Classe com atributos herdados da classe Conta.ts + atributo "aniversario" e atualização do método "visualizar".       
+    │   ├── repository/
+    │   │   └── ContaRepository.ts  # Interface com assinatura dos métodos CRUD e Métodos Bancários utilizados pelas contas.     
     │   └── util/                 
     │       └── Colors.ts           # Classe implementada para alteração de cores do terminal. Contém os atributos: "reset", "fg" e "bg".
     ├── .gitignore                  # Arquivos e pastas a serem ignorados pelo Git
@@ -26,6 +28,12 @@ Projeto de criação de um sistema bancario via terminal com TypeScript.
     └── README.md                   # Este arquivo!
 
 </details>
+
+## V1.4
+
+- Transformação da classe ```Conta.ts``` em uma classe abstrata.
+- Criação da interface ```ContaRepository.ts``` com as assinaturas dos métodos CRUD e Bancários para serem utilizados.
+- Remoção de um objeto de teste no ```Menu.ts```. 
 
 ## V1.3
 
