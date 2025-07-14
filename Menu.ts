@@ -28,7 +28,15 @@ export function main() {
   let contas: ContaController = new ContaController();
 
   // Variáveis Auxiliares para cadastro e manipulação.
-  let opcao, numero, agencia, tipo, saldo, limite, aniversario: number;
+  let opcao,
+    numero,
+    agencia,
+    tipo,
+    saldo,
+    limite,
+    aniversario,
+    valor,
+    numeroDestino: number;
   let titular: string;
   const tiposContas = ["Conta Corrente", "Conta Poupanca"];
 
@@ -295,6 +303,7 @@ export function main() {
 
         keyPress();
         break;
+
       case 5:
         console.clear();
         header();
@@ -310,20 +319,39 @@ export function main() {
 
         keyPress();
         break;
+
       case 6:
         console.clear();
         header();
         console.log(colors.fg.whitestrong, "\n\nSaque\n\n", colors.reset);
 
+        console.log("Digite o numero da conta: ");
+        numero = rl.questionInt("");
+
+        console.log("Digite o valor do saque: ");
+        valor = rl.questionFloat("R$ ");
+
+        contas.sacar(numero, valor);
+
         keyPress();
         break;
+
       case 7:
         console.clear();
         header();
         console.log(colors.fg.whitestrong, "\n\nDeposito\n\n", colors.reset);
 
+        console.log("Digite o numero da conta: ");
+        numero = rl.questionInt("");
+
+        console.log("Digite o valor do deposito: ");
+        valor = rl.questionFloat("R$ ");
+
+        contas.depositar(numero, valor);
+
         keyPress();
         break;
+
       case 8:
         console.clear();
         header();
@@ -333,8 +361,20 @@ export function main() {
           colors.reset
         );
 
+        console.log("Digite o numero da conta de origem: ");
+        numero = rl.questionInt("");
+
+        console.log("Digite o numero da conta de destino: ");
+        numeroDestino = rl.questionInt("");
+
+        console.log("Digite o valor do deposito: ");
+        valor = rl.questionFloat("R$ ");
+
+        contas.transferir(numero, numeroDestino, valor);
+
         keyPress();
         break;
+
       default:
         console.clear();
         header();

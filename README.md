@@ -31,6 +31,12 @@ Projeto de criação de um sistema bancario via terminal com TypeScript.
 
 </details>
 
+## V1.6
+
+- Transformação dos métodos do ```ContaController.ts``` em arrow functions.
+- Criação dos métodos principais ```Sacar```, ```Depositar``` e ```Transferir```. 
+- Aplicação dos métodos no ```Menu.ts```.
+
 ## V1.5
 
 - Criação da pasta controller e da classe ```ContaController.ts``` extendendo de ```ContaRepository.ts```.
