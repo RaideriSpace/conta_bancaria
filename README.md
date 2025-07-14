@@ -12,6 +12,8 @@ Projeto de criação de um sistema bancario via terminal com TypeScript.
     .
     ├── node_modules/               # Pasta de dependencias criada ao executar "npm install". Contém todos os pacotes listados no package.json
     ├── src/
+    │   ├── controller/
+    │   │   └── ContaController.ts  # Classe para controle das funções do banco que se extende de ContaRepository.ts, contendo todos os métodos do CRUD e métodos próprios auxiliares de gerar um numero e buscar no array.
     │   ├── model/
     │   │   └── Conta.ts            # Classe abstrata com atributos private e método construtor, get e set para orientação ao objeto e métodos específicos de "sacar", "depositar" e "visualizar"           
     │   │   └── ContaCorrente.ts    # Classe com atributos herdados da classe Conta.ts + atributo "limite" e atualização dos métodos "sacar" e "visualizar".           
@@ -28,6 +30,15 @@ Projeto de criação de um sistema bancario via terminal com TypeScript.
     └── README.md                   # Este arquivo!
 
 </details>
+
+## V1.5
+
+- Criação da pasta controller e da classe ```ContaController.ts``` extendendo de ```ContaRepository.ts```.
+- Criação dos métodos principais ```procurarPorNumero```, ```listarTodas```, ```cadastrar```, ```atualizar``` e ```deletar``` no ```ContaController.ts```.
+- Criação dos métodos auxiliares ```gerarNumero``` e ```buscarNoArray``` no ```ContaController.ts```.
+- Aplicação dos métodos no ```Menu.ts```.
+- Remoção dos objetos simples de teste no ```Menu.ts```.
+- Criação de 4 novos objetos de teste no ```Menu.ts``` usando as variáveis de criação de conta.
 
 ## V1.4
 

@@ -140,9 +140,7 @@ export abstract class Conta {
         tipo = "Conta Poupanca";
         break;
     }
-
-    console.clear();
-    header();
+    
     console.log(colors.fg.bluestrong);
     console.log("==================================================");
     console.log(
