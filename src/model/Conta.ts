@@ -77,55 +77,18 @@ export abstract class Conta {
   public sacar(valor: number): boolean {
     // Se o saldo for menor que o valor a ser sacado, retorna falso.
     if (this._saldo < valor) {
-      console.clear();
-      header();
-      console.log(
-        `${colors.fg.bluestrong}
-        \n Opa! Voce nao tem saldo pra isso!\n\n Tentativa de saque de: ${
-          colors.fg.whitestrong
-        }R$ ${valor.toFixed(2)}${colors.fg.bluestrong}\n Saldo: ${
-          colors.fg.whitestrong
-        }R$ ${this.saldo.toFixed(2)} 
-        ${colors.reset}`
-      );
-      keyPress();
       return false;
     }
 
     // Se não cair no if, realiza o saque e retorna verdadeiro.
-    this._saldo = this._saldo - valor;
-    console.clear();
-    header();
-    console.log(
-      `${colors.fg.bluestrong}
-      \n Saque de ${colors.fg.whitestrong}R$ ${valor.toFixed(2)}${
-        colors.fg.bluestrong
-      } realizado com sucesso!\n\n Seu novo saldo é de:${
-        colors.fg.whitestrong
-      } R$ ${this.saldo.toFixed(2)}${
-        colors.fg.bluestrong
-      }\n\n Não esqueça de retirar seu dinheiro!
-      ${colors.reset}`
-    );
-    keyPress();
+    this._saldo -= valor;
     return true;
   }
 
   // Criação do método "Depositar" para sacar dinheiro da conta.
   public depositar(valor: number): void {
     this._saldo = this._saldo + valor;
-    console.clear();
-    header();
-    console.log(
-      `${colors.fg.bluestrong}
-      \n Deposito de ${colors.fg.whitestrong}R$ ${valor.toFixed(2)}${
-        colors.fg.bluestrong
-      } realizado com sucesso!\n\n Seu novo saldo é de: ${
-        colors.fg.whitestrong
-      }R$ ${this.saldo.toFixed(2)}
-      ${colors.reset}`
-    );
-    keyPress();
+    
   }
 
   // Criação do método "Visualizar" para ver os dados da conta.

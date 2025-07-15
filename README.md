@@ -31,6 +31,10 @@ Projeto de criação de um sistema bancario via terminal com TypeScript.
 
 </details>
 
+## V1.6.2
+
+- Modificações visuais e textuais para compatibilizar com a interface geral do banco.
+
 ## V1.6
 
 - Transformação dos métodos do ```ContaController.ts``` em arrow functions.

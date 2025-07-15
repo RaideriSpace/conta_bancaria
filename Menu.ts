@@ -147,7 +147,7 @@ export function main() {
     );
 
     // Solicita uma opção.
-    console.log("\nEntre com a opção desejada: ");
+    console.log("Entre com a opção desejada: ");
     opcao = rl.questionInt("");
 
     // Se a opção for o 9, finaliza o programa e exibe a mensagem de saída.
@@ -173,21 +173,29 @@ export function main() {
       case 1:
         console.clear();
         header();
-        console.log(colors.fg.whitestrong, "\n\nNova Conta\n\n", colors.reset);
+        console.log(colors.fg.whitestrong, "\nNova Conta\n", colors.reset);
 
-        console.log("Digite o numero da agencia: ");
-        agencia = rl.questionInt("");
-        console.log("Digite o nome do titular da conta: ");
-        titular = rl.question("");
-        console.log("\nDigite o tipo da conta: ");
+        agencia = rl.questionInt(
+          `${colors.fg.bluestrong}Digite o numero da agencia: ${colors.reset}`
+        );
+        titular = rl.question(
+          `${colors.fg.bluestrong}Digite o nome do titular da conta: ${colors.reset}`
+        );
+        console.log(
+          `${colors.fg.bluestrong}Digite o tipo da conta: ${colors.reset}`
+        );
         tipo = rl.keyInSelect(tiposContas, "", { cancel: false }) + 1;
-        console.log("Digite o saldo da conta:");
-        saldo = rl.questionFloat("R$ ");
+        saldo = rl.questionFloat(
+          `${colors.fg.bluestrong}Digite o saldo da conta: ${colors.fg.whitestrong}R$ ${colors.reset}`
+        );
 
         switch (tipo) {
           case 1:
-            console.log("Digite o limite da conta (R$): ");
-            limite = rl.questionFloat("");
+            limite = rl.questionFloat(
+              `${colors.fg.bluestrong}Digite o limite da conta: ${colors.fg.whitestrong}R$ ${colors.reset}`
+            );
+            console.clear();
+            header();
             contas.cadastrar(
               new ContaCorrente(
                 contas.gerarNumero(),
@@ -201,8 +209,12 @@ export function main() {
             break;
 
           case 2:
-            console.log("Digite o dia do aniversario da conta poupanca: ");
-            aniversario = rl.questionInt("");
+            aniversario = rl.questionInt(
+              `${colors.fg.bluestrong}Digite o dia do aniversario da conta poupanca: ${colors.fg.whitestrong} ${colors.reset}`
+            );
+
+            console.clear();
+            header();
             contas.cadastrar(
               new ContaPoupanca(
                 contas.gerarNumero(),
@@ -222,69 +234,75 @@ export function main() {
       case 2:
         console.clear();
         header();
-        console.log(
-          colors.fg.whitestrong,
-          "\n\nLista de Contas\n\n",
-          colors.reset
-        );
+        console.log(colors.fg.whitestrong, "\nLista de Contas\n", colors.reset);
 
         contas.listarTodas();
-
+        console.log("");
         keyPress();
         break;
+
       case 3:
         console.clear();
         header();
         console.log(
           colors.fg.whitestrong,
-          "\n\nBuscar Conta por Numero\n\n",
+          "\nBuscar Conta por Numero\n",
           colors.reset
         );
 
-        console.log("Digite o numero da conta: ");
-        numero = rl.questionInt("");
+        numero = rl.questionInt(
+          `${colors.fg.bluestrong}Digite o numero da conta: ${colors.reset}`
+        );
         contas.procurarPorNumero(numero);
 
+        console.log("");
         keyPress();
         break;
+
       case 4:
         console.clear();
         header();
         console.log(
           colors.fg.whitestrong,
-          "\n\nAtualizar Dados da Conta\n\n",
+          "\nAtualizar Dados da Conta\n",
           colors.reset
         );
 
-        console.log("Digite o numero da conta: ");
-        numero = rl.questionInt("");
+        numero = rl.questionInt(
+          `${colors.fg.bluestrong}Digite o numero da conta: ${colors.reset}`
+        );
 
         let conta = contas.buscarNoArray(numero);
 
         if (conta != null) {
-          console.log("Digite o numero da agencia: ");
-          agencia = rl.questionInt("");
+          agencia = rl.questionInt(
+            `${colors.fg.bluestrong}Digite o numero da agencia: ${colors.reset}`
+          );
 
-          console.log("Digite o nome do titular da conta: ");
-          titular = rl.question("");
+          titular = rl.question(
+            `${colors.fg.bluestrong}Digite o nome do titular da conta: ${colors.reset}`
+          );
 
           tipo = conta.tipo;
 
-          console.log("\nDigite o saldo da conta: ");
-          saldo = rl.questionFloat("R$ ");
+          saldo = rl.questionFloat(
+            `${colors.fg.bluestrong}Digite o saldo da conta: ${colors.fg.whitestrong}R$ ${colors.reset}`
+          );
 
           switch (tipo) {
             case 1:
-              console.log("Digite o limite da conta: ");
-              limite = rl.questionFloat("R$ ");
+              limite = rl.questionFloat(
+                `${colors.fg.bluestrong}Digite o limite da conta: ${colors.fg.whitestrong}R$ ${colors.reset}`
+              );
               contas.atualizar(
                 new ContaCorrente(numero, agencia, tipo, titular, saldo, limite)
               );
               break;
 
             case 2:
-              console.log("Digite o dia do aniversario da conta poupanca: ");
-              aniversario = rl.questionInt("");
+              aniversario = rl.questionInt(
+                `${colors.fg.bluestrong}Digite o dia do aniversario da conta poupanca: ${colors.fg.whitestrong} ${colors.reset}`
+              );
               contas.atualizar(
                 new ContaPoupanca(
                   numero,
@@ -298,57 +316,64 @@ export function main() {
               break;
           }
         } else {
-          console.log(`\nA conta numero ${numero} nao foi encontrada!`);
+          console.log(
+            `${colors.fg.bluestrong}\nA conta numero ${colors.fg.whitestrong} ${numero} ${colors.fg.bluestrong} nao foi encontrada!${colors.reset}`
+          );
         }
 
+        console.log("");
         keyPress();
         break;
 
       case 5:
         console.clear();
         header();
-        console.log(
-          colors.fg.whitestrong,
-          "\n\nDeletar Conta\n\n",
-          colors.reset
-        );
+        console.log(colors.fg.whitestrong, "\nDeletar Conta\n", colors.reset);
 
-        console.log("Digite o numero da conta: ");
-        numero = rl.questionInt("");
+        numero = rl.questionInt(
+          `${colors.fg.bluestrong}Digite o numero da conta: ${colors.reset}`
+        );
         contas.deletar(numero);
 
+        console.log("");
         keyPress();
         break;
 
       case 6:
         console.clear();
         header();
-        console.log(colors.fg.whitestrong, "\n\nSaque\n\n", colors.reset);
+        console.log(colors.fg.whitestrong, "\nSaque\n", colors.reset);
 
-        console.log("Digite o numero da conta: ");
-        numero = rl.questionInt("");
+        numero = rl.questionInt(
+          `${colors.fg.bluestrong}Digite o numero da conta: ${colors.reset}`
+        );
 
-        console.log("Digite o valor do saque: ");
-        valor = rl.questionFloat("R$ ");
+        valor = rl.questionFloat(
+          `${colors.fg.bluestrong}Digite o valor do saque: ${colors.fg.whitestrong}R$ ${colors.reset}`
+        );
 
         contas.sacar(numero, valor);
 
+        console.log("");
         keyPress();
         break;
 
       case 7:
         console.clear();
         header();
-        console.log(colors.fg.whitestrong, "\n\nDeposito\n\n", colors.reset);
+        console.log(colors.fg.whitestrong, "\nDeposito\n", colors.reset);
 
-        console.log("Digite o numero da conta: ");
-        numero = rl.questionInt("");
+        numero = rl.questionInt(
+          `${colors.fg.bluestrong}Digite o numero da conta: ${colors.reset}`
+        );
 
-        console.log("Digite o valor do deposito: ");
-        valor = rl.questionFloat("R$ ");
+        valor = rl.questionFloat(
+          `${colors.fg.bluestrong}Digite o valor do deposito: ${colors.fg.whitestrong}R$ ${colors.reset}`
+        );
 
         contas.depositar(numero, valor);
 
+        console.log("");
         keyPress();
         break;
 
@@ -357,18 +382,21 @@ export function main() {
         header();
         console.log(
           colors.fg.whitestrong,
-          "\n\nTransferencia Entre Contas\n\n",
+          "\nTransferencia Entre Contas\n",
           colors.reset
         );
 
-        console.log("Digite o numero da conta de origem: ");
-        numero = rl.questionInt("");
+        numero = rl.questionInt(
+          `${colors.fg.bluestrong}Digite o numero da conta de origem: ${colors.reset}`
+        );
 
-        console.log("Digite o numero da conta de destino: ");
-        numeroDestino = rl.questionInt("");
+        numeroDestino = rl.questionInt(
+          `${colors.fg.bluestrong}Digite o numero da conta de destino: ${colors.reset}`
+        );
 
-        console.log("Digite o valor do deposito: ");
-        valor = rl.questionFloat("R$ ");
+        valor = rl.questionFloat(
+          `${colors.fg.bluestrong}Digite o valor da transferencia: ${colors.fg.whitestrong}R$ ${colors.reset}`
+        );
 
         contas.transferir(numero, numeroDestino, valor);
 
@@ -388,8 +416,7 @@ export function main() {
 
 // Método de KeyPress para solicitar que uma tecla seja pressionada para continuar.
 export function keyPress(): void {
-  console.log(colors.reset, "");
-  console.log("Pressione enter para continuar...");
+  console.log(`${colors.reset}Pressione enter para continuar...`);
   rl.prompt();
 }
 

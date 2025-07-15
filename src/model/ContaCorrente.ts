@@ -36,36 +36,12 @@ export class ContaCorrente extends Conta {
     // Se a soma do saldo e do limite foram menores que o valor, não permite o saque.
     if (this.saldo + this._limite < valor) {
       console.clear();
-      header();
-      console.log(
-        `${colors.fg.bluestrong}
-        \n Opa! Voce nao tem saldo pra isso!\n\n Tentativa de saque de: ${
-          colors.fg.whitestrong
-        }R$ ${valor.toFixed(2)}$${colors.fg.bluestrong}\n Saldo + Limite de: ${
-          colors.fg.whitestrong
-        }R$ ${this.saldo.toFixed(2)} 
-        ${colors.reset}`
-      );
-      keyPress();
+
       return false;
     }
 
     // Se não cair no "if", faz o saque normalmente.
     this.saldo = this.saldo - valor;
-    console.clear();
-    header();
-    console.log(
-      `${colors.fg.bluestrong}
-      \n Saque de ${colors.fg.whitestrong}R$ ${valor.toFixed(2)}${
-        colors.fg.bluestrong
-      } realizado com sucesso!\n\n Seu novo saldo é de:${
-        colors.fg.whitestrong
-      } R$ ${this.saldo.toFixed(2)}${
-        colors.fg.bluestrong
-      }\n\n Não esqueça de retirar seu dinheiro!
-      ${colors.reset}`
-    );
-    keyPress();
     return true;
   }
 
